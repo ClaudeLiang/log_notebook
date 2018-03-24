@@ -16,7 +16,7 @@ Format:         YYYY-MM-DD|author|level|content
 
 Output files type:                                                        
 
-    .log        log file, use \\n between each line                       
+    .log        log file, use \n between each line                       
 
     .dat        dat file, use %0A between each line, for data analysis    
     
