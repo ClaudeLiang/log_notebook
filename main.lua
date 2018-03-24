@@ -50,6 +50,8 @@ local function init(ctx, arg)
     f:close()
     if nil ~= conf and "" ~= conf then
         ctx.conf = lyaml.load(conf)
+    else
+        ctx.conf = {}
     end
     for k, v in pairs(arg) do
         if string.find(v, HELP_OPT) then
