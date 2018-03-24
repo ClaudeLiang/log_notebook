@@ -64,7 +64,7 @@ local function init(ctx, arg)
         end
     end
     ctx.datF = io.open(getName(ctx)..".dat", "a")
-    ctx.datF:write(getHeader(ctx))
+    ctx.datF:write("\n"..getHeader(ctx))
     return 0
 end
 
@@ -107,7 +107,7 @@ local function main()
         line = line + 1
         total = total + 1
         if line == 1 and total ~= 1 then
-            writeToDatFile(ctx, getHeader(ctx))
+            writeToDatFile(ctx, "\n"..getHeader(ctx))
             article[total] = getHeader(ctx)
         elseif line == 2 and total ~= 2 then
             writeToDatFile(ctx, text.."%0A")
