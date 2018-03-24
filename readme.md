@@ -18,5 +18,5 @@ Output files type:
 
     .log        log file, use \n between each line                       
 
-    .dat        dat file, use %0A between each line, for data analysis    
-    
+    .dat        dat file, use %0A between each line, for data analysis,    
+                also, you can use cat NAME.dat|sed 's/%0A/\n/g' to read

@@ -25,7 +25,8 @@ local function help(ctx)
     print("Format:         YYYY-MM-DD|author|level|content                           \n")
     print("Output files type:                                                        \n")
     print("    .log        log file, use \\n between each line                       \n")
-    print("    .dat        dat file, use %0A between each line, for data analysis    \n")
+    print("    .dat        dat file, use %0A between each line, for data analysis,   \n")
+    print("                also, you can use cat NAME.dat|sed 's/%0A/\\n/g' to read  \n")
 end
 
 local function getName(ctx) 
@@ -68,7 +69,9 @@ local function init(ctx, arg)
 end
 
 local function destroy(ctx)
-    ctx.datF:close()
+    if (ctx.datF) then
+        ctx.datF:close()
+    end
     os.exit(0)
 end
 
