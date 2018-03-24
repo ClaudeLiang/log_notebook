@@ -1,0 +1,11 @@
+# author name
+author: claudeliang
+
+# the path where note files store
+notepath: "/Users/claudeliang/.notes"
+
+# text after name like YYYY-MM-DD
+sufname: ".log"
+
+# the lable to quit input
+quitlabel: "push"
