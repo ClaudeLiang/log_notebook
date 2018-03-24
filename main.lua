@@ -51,8 +51,6 @@ local function init(ctx, arg)
     if nil ~= conf and "" ~= conf then
         ctx.conf = lyaml.load(conf)
     end
-    ctx.datF = io.open(getName(ctx)..".dat", "a")
-    ctx.datF:write(getHeader(ctx))
     for k, v in pairs(arg) do
         if string.find(v, HELP_OPT) then
             return 1
@@ -62,17 +60,21 @@ local function init(ctx, arg)
             ctx.conf.level = string.gsub(v, LEVEL_OPT, "", 1)
         end
     end
+    ctx.datF = io.open(getName(ctx)..".dat", "a")
+    ctx.datF:write(getHeader(ctx))
     return 0
 end
 
 local function destroy(ctx)
     ctx.datF:close()
+    os.exit(0)
 end
 
 local function writeToViewFile(ctx, article)
     local f = io.open(getName(ctx)..".log", "a")
     f:write(getHeader(ctx)..article.."\n")
     f:close()
+    destroy(ctx)
 end
 
 local function writeToDatFile(ctx, line)
@@ -84,7 +86,7 @@ local function main()
     local ctx = {}
     if init(ctx, arg) == 1 then 
         help(ctx)
-        os.exit(0)
+        destroy(ctx)
     end
     welcome(ctx)
 
